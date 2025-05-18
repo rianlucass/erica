@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-romance-black-dark text-white font-montserrat;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.section-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+}
+
+.section-title {
+  @apply text-4xl md:text-5xl font-dancing font-bold text-center mb-12 text-romance-gold-light;
+  text-shadow: 0 0 15px rgba(255, 209, 102, 0.3);
+}
+
+.glass-card {
+  @apply bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-lg;
+}
+
+/* Custom Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes writing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes heart-beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-writing {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: writing 3s steps(40, end) forwards;
+}
+
+.animate-heart-beat {
+  animation: heart-beat 1.2s infinite;
+}
+
+/* Staggered animation delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but allow scrolling */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Slick carousel custom styles */
+.slick-dots li button:before {
+  @apply text-romance-pink-light;
+  font-size: 12px;
+}
+
+.slick-dots li.slick-active button:before {
+@apply text-romance-pink;
+}
+
+/* Card hover effects */
+.message-card {
+  transition: all 0.3s ease;
+}
+
+.message-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 25px -5px rgba(255, 107, 169, 0.4);
+}
+
+/* Modal styles */
+.modal-overlay {
+  @apply fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300;
+}
+
+.modal-overlay.active {
+  @apply opacity-100 pointer-events-auto;
+}
+
+.modal-content {
+  @apply bg-gradient-to-br from-romance-purple-dark/80 to-romance-pink-dark/80 p-6 rounded-xl max-w-lg w-full mx-4 transform scale-95 transition-all duration-300 backdrop-blur-md border border-white/20;
+}
+
+.modal-overlay.active .modal-content {
+  @apply scale-100;
+}
+
+/* Progress bar */
+.progress-bar {
+  @apply h-2 rounded-full bg-gray-700 overflow-hidden;
+}
+
+.progress-bar-fill {
+  @apply h-full rounded-full bg-gradient-to-r from-romance-pink-light to-romance-purple-light;
+  transition: width 1s ease-in-out;
+}
+
+/* Timeline styles */
+.timeline-container {
+  @apply relative;
+}
+
+.timeline-container::before {
+  content: '';
+  @apply absolute left-0 md:left-1/2 top-0 h-full w-1 bg-romance-gold-light transform md:-translate-x-1/2;
+}
+
+.timeline-item {
+  @apply relative mb-12 opacity-0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.timeline-item:nth-child(odd) {
+  @apply md:pr-12 md:text-right;
+}
+
+.timeline-item:nth-child(even) {
+  @apply md:pl-12 md:ml-auto;
+}
+
+.timeline-item::before {
+  content: '';
+  @apply absolute w-5 h-5 rounded-full bg-romance-gold border-4 bg-romance-gold;
+  top: 0;
+}
+
+.timeline-item:nth-child(odd)::before {
+  @apply left-0 md:left-auto md:right-0 md:translate-x-1/2;
+}
+
+.timeline-item:nth-child(even)::before {
+  @apply left-0 -translate-x-1/2;
+}
